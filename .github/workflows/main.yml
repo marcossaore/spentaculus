@@ -41,7 +41,7 @@ jobs:
 
     - name: Set up testing database
       run: |
-        php artisan migrate
+          php artisan migrate --database=mysql --env=testing
 
     - name: Run tests with coverage
       run: php artisan test --coverage-clover=build/logs/clover.xml
