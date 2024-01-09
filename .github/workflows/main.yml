@@ -26,6 +26,7 @@ jobs:
       DB_DATABASE: test_db
       DB_USERNAME: test_user
       DB_PASSWORD: test_password
+      APP_ENV: testing
 
     steps:
     - name: Checkout code
