@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class SpentCreatedNotification extends Notification implements ShouldQueue
+class SpentDeletedNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -35,10 +35,10 @@ class SpentCreatedNotification extends Notification implements ShouldQueue
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->greeting('Despesa cadastrada')
-            ->subject('Nova despesa cadastrada')
+            ->greeting('Despesa removida')
+            ->subject('Despesa removida')
             ->line('Olá, ' . $notifiable->name)
-            ->line('Informamos que um novo gasto foi registrado em sua conta.')
+            ->line('Informamos que um gasto foi removido da sua conta.')
             ->line($this->spent->description)
             ->line('valor: R$ ' . number_format($this->spent->value / 100, 2, ',', '.'))
             ->line('Dia do gasto ' . $this->spent->getFormattedSpentAt())

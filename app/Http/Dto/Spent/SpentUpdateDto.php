@@ -3,9 +3,9 @@
 namespace App\Http\Dto\Spent;
 
 use App\Http\Dto\FromArrayToDto;
-use App\Http\Dto\FromDtoToArray;
+use App\Http\Dto\FromDtoToEntityArray;
 
-class SpentUpdateDto implements FromArrayToDto, FromDtoToArray
+class SpentUpdateDto implements FromArrayToDto, FromDtoToEntityArray
 {
     public function toDto(array $data)
     {
@@ -24,7 +24,7 @@ class SpentUpdateDto implements FromArrayToDto, FromDtoToArray
         return $this;
     }
 
-    public function toArray()
+    public function toEntityArray()
     {
         $data = [];
 
@@ -37,7 +37,7 @@ class SpentUpdateDto implements FromArrayToDto, FromDtoToArray
         }
 
         if (isset($this->{'spentAt'})) {
-            $data['spentAt'] = $this->{'spentAt'};
+            $data['spent_at'] = $this->{'spentAt'};
         }
 
         return $data;

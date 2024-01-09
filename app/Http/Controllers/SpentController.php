@@ -12,6 +12,7 @@ use App\Http\Errors\ServerError;
 use App\Http\Requests\SpentUpdateRequest;
 use App\Http\Resources\SpentResource;
 use App\Notifications\SpentCreatedNotification;
+use App\Notifications\SpentDeletedNotification;
 use App\Notifications\SpentUpdatedNotification;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\Request;
@@ -49,9 +50,15 @@ class SpentController extends Controller
             if (!$spent) {
                 throw new NotFoundError('Despesa não encontrada!');
             }
+
             $data = $request->validated();
             $spentUpdateDto = $this->spentUpdateDto->toDto($data);
-            $spent->update($spentUpdateDto->toArray());
+
+            if((array)$spentUpdateDto == null) {
+                return new SpentResource($spent);
+            }
+
+            $spent->update($spentUpdateDto->toEntityArray());
             $user->notify(new SpentUpdatedNotification($spent));
             return new SpentResource($spent);
         } catch (NotFoundError $exception) {
@@ -104,6 +111,7 @@ class SpentController extends Controller
             if (!$spent) {
                 throw new NotFoundError('Despesa não encontrada!');
             }
+            $user->notify(new SpentDeletedNotification($spent));
             $spent->delete();
             return response()->json([], 204);
         } catch (NotFoundError $exception) {

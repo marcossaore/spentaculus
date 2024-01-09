@@ -38,11 +38,11 @@ class SpentUpdatedNotification extends Notification implements ShouldQueue
             ->greeting('Despesa atualizada')
             ->subject('Despesa atualizada')
             ->line('Olá, ' . $notifiable->name)
-            ->line('Informamos que o  gasto foi atualizado em sua conta.')
+            ->line('Informamos que um gasto foi atualizado em sua conta.')
             ->line($this->spent->description)
             ->line('valor: R$ ' . number_format($this->spent->value / 100, 2, ',', '.'))
             ->line('Dia do gasto ' . $this->spent->getFormattedSpentAt())
-            ->line('Para mais detalhes, acesse sua área de despesas')
+            ->line('Para mais detalhes, acesse sua área de despesas.')
             ->salutation('Equipe Spentaculus');
     }
 
