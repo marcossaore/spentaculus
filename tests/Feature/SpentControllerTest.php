@@ -38,7 +38,7 @@ describe('SpentControllerFeature@store feature', function (){
         $response->assertStatus(401);
         $responseBody = $response->json();
         expect($responseBody['message'])->toBe('Unauthenticated.');
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@store');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@store');
 
     it('returns 422 if data is not provided', function() {
         actingAs($this->userStub);
@@ -47,7 +47,7 @@ describe('SpentControllerFeature@store feature', function (){
         $responseBody = $response->json();
         expect($responseBody['message'])->toBe('A descrição deve ser informada. (and 1 more error)');
         expect(sizeof($responseBody['errors']))->toBe(2);
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@store');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@store');
 
     it('returns 422 if description has more than 191 characters', function() {
         actingAs($this->userStub);
@@ -56,7 +56,7 @@ describe('SpentControllerFeature@store feature', function (){
         $responseBody = $response->json();
         expect($responseBody['message'])->toBe('A descrição pode ter no máximo 191 caracteres.');
         expect(sizeof($responseBody['errors']))->toBe(1);
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@store');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@store');
 
     it('returns 422 if value provided is less than 1', function() {
         actingAs($this->userStub);
@@ -65,7 +65,7 @@ describe('SpentControllerFeature@store feature', function (){
         $responseBody = $response->json();
         expect($responseBody['message'])->toBe('O valor deve ser maior que 0 (zero).');
         expect(sizeof($responseBody['errors']))->toBe(1);
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@store');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@store');
 
     it('returns 422 if spentAt is greather than now', function() {
         $currentDateTime = Carbon::now();
@@ -77,7 +77,7 @@ describe('SpentControllerFeature@store feature', function (){
         $responseBody = $response->json();
         expect($responseBody['message'])->toBe('A data da despesa deve ser menor ou igual a data atual.');
         expect(sizeof($responseBody['errors']))->toBe(1);
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@store');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@store');
 
     it('returns 201 when succeds with spentAt as now date', function() {
         actingAs($this->userStub);
@@ -91,7 +91,7 @@ describe('SpentControllerFeature@store feature', function (){
         expect($responseBody['data']['description'])->toBe('any description');
         expect($responseBody['data']['value'])->toBe(1000);
         $this->assertIsString($responseBody['data']['spentAt']);
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@store');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@store');
 
     it('returns 201 when succeds with spentAt provided by user', function() {
         $currentDateTime = Carbon::now();
@@ -108,7 +108,7 @@ describe('SpentControllerFeature@store feature', function (){
         expect($responseBody['data']['description'])->toBe('any description');
         expect($responseBody['data']['value'])->toBe(23025);
         expect($responseBody['data']['spentAt'])->toBe($formattedTenDaysAgo);
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@store');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@store');
 });
 
 describe('SpentControllerFeature@update feature', function (){
@@ -127,7 +127,7 @@ describe('SpentControllerFeature@update feature', function (){
         $response->assertStatus(401);
         $responseBody = $response->json();
         expect($responseBody['message'])->toBe('Unauthenticated.');
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@update');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@update');
 
     it('returns 404 if spent no exists for user', function() {
         actingAs($this->userStub);
@@ -135,7 +135,7 @@ describe('SpentControllerFeature@update feature', function (){
         $response->assertStatus(404);
         $responseBody = $response->json();
         expect($responseBody['error'])->toBe('Despesa não encontrada!');
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@update');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@update');
 
     it('returns 422 if description has more than 191 characters', function() {
         actingAs($this->userStub);
@@ -144,7 +144,7 @@ describe('SpentControllerFeature@update feature', function (){
         $responseBody = $response->json();
         expect($responseBody['message'])->toBe('A descrição pode ter no máximo 191 caracteres.');
         expect(sizeof($responseBody['errors']))->toBe(1);
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@update');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@update');
 
     it('returns 422 if value provided is less than 1', function() {
         actingAs($this->userStub);
@@ -153,7 +153,7 @@ describe('SpentControllerFeature@update feature', function (){
         $responseBody = $response->json();
         expect($responseBody['message'])->toBe('O valor deve ser maior que 0 (zero).');
         expect(sizeof($responseBody['errors']))->toBe(1);
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@update');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@update');
 
     it('returns 422 if spentAt is greather than now', function() {
         $currentDateTime = Carbon::now();
@@ -165,7 +165,7 @@ describe('SpentControllerFeature@update feature', function (){
         $responseBody = $response->json();
         expect($responseBody['message'])->toBe('A data da despesa deve ser menor ou igual a data atual.');
         expect(sizeof($responseBody['errors']))->toBe(1);
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@update');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@update');
 
     it('returns 200 find spent but body is no provided', function() {
         actingAs($this->userStub);
@@ -177,7 +177,7 @@ describe('SpentControllerFeature@update feature', function (){
             SpentUpdatedNotification::class
         );
         expect($responseBody['data']['id'])->toBe($this->spentStub->id);
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@update');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@update');
 
     it('returns 200 when succeds with description updated', function() {
         actingAs($this->userStub);
@@ -190,7 +190,7 @@ describe('SpentControllerFeature@update feature', function (){
         );
         expect($responseBody['data']['id'])->toBe($this->spentStub->id);
         expect($responseBody['data']['description'])->toBe('other description');
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@update');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@update');
 
     it('returns 200 when succeds with value updated', function() {
         actingAs($this->userStub);
@@ -203,7 +203,7 @@ describe('SpentControllerFeature@update feature', function (){
         );
         expect($responseBody['data']['id'])->toBe($this->spentStub->id);
         expect($responseBody['data']['value'])->toBe(9999);
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@update');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@update');
 
     it('returns 200 when succeds with spentAt updated', function() {
         $currentDateTime = Carbon::now();
@@ -219,7 +219,7 @@ describe('SpentControllerFeature@update feature', function (){
         );
         expect($responseBody['data']['id'])->toBe($this->spentStub->id);
         expect($responseBody['data']['spentAt'])->toBe($formattedOneMinuteAgo);
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@update');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@update');
 });
 
 describe('SpentControllerFeature@index feature', function (){
@@ -229,7 +229,7 @@ describe('SpentControllerFeature@index feature', function (){
         $response->assertStatus(401);
         $responseBody = $response->json();
         expect($responseBody['message'])->toBe('Unauthenticated.');
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@index');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@index');
 
     it('returns 200 when succeds without any spent registered', function() {
         actingAs($this->userStub);
@@ -239,7 +239,7 @@ describe('SpentControllerFeature@index feature', function (){
         expect($responseBody['meta']['current_page'])->toBe(1);
         expect($responseBody['meta']['per_page'])->toBe(10);
         expect(sizeof($responseBody['data']))->toBe(0);
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@index');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@index');
 
     it('returns 200 when succeds with 2 spent', function() {
         Spent::factory()->create([
@@ -263,7 +263,7 @@ describe('SpentControllerFeature@index feature', function (){
         expect($responseBody['meta']['current_page'])->toBe(1);
         expect($responseBody['meta']['per_page'])->toBe(10);
         expect(sizeof($responseBody['data']))->toBe(2);
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@index');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@index');
 });
 
 describe('SpentControllerFeature@show feature', function (){
@@ -282,7 +282,7 @@ describe('SpentControllerFeature@show feature', function (){
         $response->assertStatus(401);
         $responseBody = $response->json();
         expect($responseBody['message'])->toBe('Unauthenticated.');
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@show');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@show');
 
     it('returns 404 if spent no exists for user', function() {
         actingAs($this->userStub);
@@ -290,7 +290,7 @@ describe('SpentControllerFeature@show feature', function (){
         $response->assertStatus(404);
         $responseBody = $response->json();
         expect($responseBody['error'])->toBe('Despesa não encontrada!');
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@show');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@show');
 
     it('returns 200 when succeds', function() {
         actingAs($this->userStub);
@@ -298,7 +298,7 @@ describe('SpentControllerFeature@show feature', function (){
         $response->assertStatus(200);
         $responseBody = $response->json();
         expect($responseBody['data']['id'])->toBe($this->spentStub->id);
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@show');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@show');
 });
 
 describe('SpentControllerFeature@destroy feature', function (){
@@ -317,7 +317,7 @@ describe('SpentControllerFeature@destroy feature', function (){
         $response->assertStatus(401);
         $responseBody = $response->json();
         expect($responseBody['message'])->toBe('Unauthenticated.');
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@destroy');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@destroy');
 
     it('returns 404 if spent no exists for user', function() {
         actingAs($this->userStub);
@@ -325,7 +325,7 @@ describe('SpentControllerFeature@destroy feature', function (){
         $response->assertStatus(404);
         $responseBody = $response->json();
         expect($responseBody['error'])->toBe('Despesa não encontrada!');
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@destroy');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@destroy');
 
     it('returns 204 when succeds', function() {
         actingAs($this->userStub);
@@ -338,5 +338,5 @@ describe('SpentControllerFeature@destroy feature', function (){
         );
 
         expect(Spent::count())->toBe(0);
-    })->group('unit')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@destroy');
+    })->group('feature')->group('SpentController')->group('SpentControllerFeature')->group('SpentController@destroy');
 });

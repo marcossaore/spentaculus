@@ -34,7 +34,7 @@ describe('AuthController@signUp feature', function (){
         $responseBody = $response->json();
         expect($responseBody['message'])->toBe('O nome deve ser informado. (and 2 more errors)');
         expect(sizeof($responseBody['errors']))->toBe(3);
-    })->group('unit')->group('AuthController')->group('AuthControllerFeature')->group('AuthController@signUp');
+    })->group('feature')->group('AuthController')->group('AuthControllerFeature')->group('AuthController@signUp');
 
     it('returns 422 if user with email already exists', function() {
         User::factory()->create([
@@ -50,7 +50,7 @@ describe('AuthController@signUp feature', function (){
         $responseBody = $response->json();
         expect($responseBody['message'])->toBe('O email informado já existe');
         expect(sizeof($responseBody['errors']))->toBe(1);
-    })->group('unit')->group('AuthController')->group('AuthControllerFeature')->group('AuthController@signUp');
+    })->group('feature')->group('AuthController')->group('AuthControllerFeature')->group('AuthController@signUp');
 
     it('creates an user when succeds', function() {
         $response = postJson('/api/auth/signup', $this->requestStub);
@@ -64,7 +64,7 @@ describe('AuthController@signUp feature', function (){
 
         expect($userCreated->name)->toBe($this->requestStub['name']);
 
-    })->group('unit')->group('AuthController')->group('AuthControllerFeature')->group('AuthController@signUp');
+    })->group('feature')->group('AuthController')->group('AuthControllerFeature')->group('AuthController@signUp');
 });
 
 describe('AuthController@signIn feature', function (){
@@ -86,7 +86,7 @@ describe('AuthController@signIn feature', function (){
         $responseBody = $response->json();
         expect($responseBody['message'])->toBe('O email deve ser informado. (and 1 more error)');
         expect(sizeof($responseBody['errors']))->toBe(2);
-    })->group('unit')->group('AuthController')->group('AuthControllerFeature')->group('AuthController@signIn');
+    })->group('feature')->group('AuthController')->group('AuthControllerFeature')->group('AuthController@signIn');
 
     it('returns 401 if password provided is not equals registered', function() {
         $response = postJson('/api/auth/signin', [
@@ -96,7 +96,7 @@ describe('AuthController@signIn feature', function (){
         $response->assertStatus(401);
         $responseBody = $response->json();
         expect($responseBody['error'])->toBe('Usuário ou senha inválidos!');
-    })->group('unit')->group('AuthController')->group('AuthControllerFeature')->group('AuthController@signUp');
+    })->group('feature')->group('AuthController')->group('AuthControllerFeature')->group('AuthController@signUp');
 
     it('returns 200 on success', function() {
         $response = postJson('/api/auth/signin', [
@@ -108,5 +108,5 @@ describe('AuthController@signIn feature', function (){
         $responseBody = $response->json();
         expect($tokenName)->toBe('api-token');
         expect($responseBody)->toHaveAttribute('token');
-    })->group('unit')->group('AuthController')->group('AuthControllerFeature')->group('AuthController@signUp');
+    })->group('feature')->group('AuthController')->group('AuthControllerFeature')->group('AuthController@signUp');
 });
