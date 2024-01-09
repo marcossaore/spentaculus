@@ -35,6 +35,13 @@
         }
     },
     "scripts": {
+        "up": "./vendor/bin/sail up -d",
+        "test:unit": "./vendor/bin/sail pest --group=unit",
+        "test:feat": "./vendor/bin/sail pest --group=feature",
+        "test": "./vendor/bin/sail pest",
+        "test:coverage": "./vendor/bin/sail pest --coverage-html coverage",
+        "queue:work": "./vendor/bin/sail artisan queue:work",
+        "clear:all": "./vendor/bin/sail artisan config:cache && ./vendor/bin/sail artisan cache:clear && ./vendor/bin/sail artisan route:clear && ./vendor/bin/sail composer dumpautoload",
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
