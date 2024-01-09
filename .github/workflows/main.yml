@@ -19,16 +19,6 @@ jobs:
           MYSQL_PASSWORD: test_password
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
-    env:
-
-      DB_CONNECTION: mysql
-      DB_HOST: localhost
-      DB_PORT: 3306
-      DB_DATABASE: testing
-      DB_USERNAME: test_user
-      DB_PASSWORD: test_password
-      APP_ENV: testing
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -41,9 +31,23 @@ jobs:
     - name: Install dependencies
       run: composer install
 
-    - name: Set up testing database
+    - name: Laravel Setup
       run: |
-          php artisan migrate --database=mysql --env=testing
+        cp .env.example .env
+        composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+        php artisan key:generate
+        chmod -R 777 storage bootstrap/cache
+
+    - name: Set up testing database
+      env:
+        DB_CONNECTION: mysql
+        DB_HOST: localhost
+        DB_PORT: 3306
+        DB_DATABASE: testing
+        DB_USERNAME: test_user
+        DB_PASSWORD: test_password
+      run: |
+        php artisan migrate
 
     - name: Run tests with coverage
       run: php artisan test --coverage-clover=build/logs/clover.xml
