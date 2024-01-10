@@ -17,6 +17,14 @@ jobs:
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+
+    - name: Composer install
+      run: composer install
+
     - name: Up Laravel Sail
       run: ./vendor/bin/sail up -d
 
