@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->string('description', 191);
-            $table->datetime('spent_at')->default(now());
+            $table->timestamp('spent_at')->nullable();
             $table->integer('value');
             $table->timestamps();
         });

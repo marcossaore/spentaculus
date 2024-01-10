@@ -10,6 +10,15 @@ class Spent extends Model
 {
     use HasFactory;
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->spent_at = $model->spent_at ?: now(); // set to current date if not provided
+        });
+    }
+
        /**
      * The attributes that are mass assignable.
      *
