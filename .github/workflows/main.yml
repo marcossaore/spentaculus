@@ -31,9 +31,6 @@ jobs:
     - name: Install Dependencies
       run: ./vendor/bin/sail composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
-    - name: Run migrations
-      run: ./vendor/bin/sail artisan migrate
-
     - name: Execute tests (Unit and Feature tests) using PEST
       run: ./vendor/bin/sail --coverage-clover=build/logs/clover.xml
 
