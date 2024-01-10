@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Spentaculus",
-    "dateExported": "2024-01-09T21:53:52.177Z",
+    "dateExported": "2024-01-10T05:40:19.215Z",
     "version": "1.1",
     "folders": [
         {
@@ -25,11 +25,11 @@
             "colId": "c649b0ac-0488-4a5c-b122-9fb83dc26982",
             "containerId": "8fafd8f6-b6ed-4a97-a240-f9fe6b7c7b77",
             "name": "Create with spentAt as now",
-            "url": "http://localhost/api/spents",
+            "url": "{{url}}/api/spents",
             "method": "POST",
             "sortNum": 5000,
             "created": "2024-01-08T21:49:20.881Z",
-            "modified": "2024-01-09T04:05:55.528Z",
+            "modified": "2024-01-10T05:39:08.180Z",
             "headers": [
                 {
                     "name": "X-Requested-With",
@@ -53,11 +53,11 @@
             "colId": "c649b0ac-0488-4a5c-b122-9fb83dc26982",
             "containerId": "8fafd8f6-b6ed-4a97-a240-f9fe6b7c7b77",
             "name": "Create with spentAt",
-            "url": "http://localhost/api/spents",
+            "url": "{{url}}/api/spents",
             "method": "POST",
             "sortNum": 7500,
             "created": "2024-01-09T04:01:12.405Z",
-            "modified": "2024-01-09T15:50:01.985Z",
+            "modified": "2024-01-10T05:39:13.028Z",
             "headers": [
                 {
                     "name": "X-Requested-With",
@@ -81,11 +81,11 @@
             "colId": "c649b0ac-0488-4a5c-b122-9fb83dc26982",
             "containerId": "e1981f6a-cfab-44a5-8193-508eb57018ce",
             "name": "Sign Up",
-            "url": "http://localhost/api/auth/signup",
+            "url": "{{url}}/api/auth/signup",
             "method": "POST",
             "sortNum": 10000,
             "created": "2024-01-05T21:58:49.478Z",
-            "modified": "2024-01-09T16:14:35.005Z",
+            "modified": "2024-01-10T05:38:53.975Z",
             "headers": [
                 {
                     "name": "X-Requested-With",
@@ -105,11 +105,11 @@
             "colId": "c649b0ac-0488-4a5c-b122-9fb83dc26982",
             "containerId": "8fafd8f6-b6ed-4a97-a240-f9fe6b7c7b77",
             "name": "Update",
-            "url": "http://localhost/api/spents/1",
+            "url": "{{url}}/api/spents/1",
             "method": "PATCH",
             "sortNum": 10000,
             "created": "2024-01-09T02:54:17.554Z",
-            "modified": "2024-01-09T17:24:00.528Z",
+            "modified": "2024-01-10T05:39:34.397Z",
             "headers": [
                 {
                     "name": "X-Requested-With",
@@ -133,11 +133,11 @@
             "colId": "c649b0ac-0488-4a5c-b122-9fb83dc26982",
             "containerId": "e1981f6a-cfab-44a5-8193-508eb57018ce",
             "name": "Sign In",
-            "url": "http://localhost/api/auth/signin",
+            "url": "{{url}}/api/auth/signin",
             "method": "POST",
             "sortNum": 20000,
             "created": "2024-01-06T13:36:35.434Z",
-            "modified": "2024-01-09T16:14:42.883Z",
+            "modified": "2024-01-10T05:39:02.448Z",
             "headers": [
                 {
                     "name": "X-Requested-With",
@@ -164,11 +164,11 @@
             "colId": "c649b0ac-0488-4a5c-b122-9fb83dc26982",
             "containerId": "8fafd8f6-b6ed-4a97-a240-f9fe6b7c7b77",
             "name": "List",
-            "url": "http://localhost/api/spents",
+            "url": "{{url}}/api/spents",
             "method": "GET",
             "sortNum": 20000,
             "created": "2024-01-08T14:07:57.115Z",
-            "modified": "2024-01-09T04:04:55.709Z",
+            "modified": "2024-01-10T05:39:42.958Z",
             "headers": [
                 {
                     "name": "X-Requested-With",
@@ -187,11 +187,11 @@
             "colId": "c649b0ac-0488-4a5c-b122-9fb83dc26982",
             "containerId": "8fafd8f6-b6ed-4a97-a240-f9fe6b7c7b77",
             "name": "List withpage and limit",
-            "url": "http://localhost/api/spents?page=2&limit=5",
+            "url": "{{url}}/api/spents?page=2&limit=5",
             "method": "GET",
             "sortNum": 25000,
             "created": "2024-01-09T04:06:34.981Z",
-            "modified": "2024-01-09T04:07:03.122Z",
+            "modified": "2024-01-10T05:39:53.142Z",
             "headers": [
                 {
                     "name": "X-Requested-With",
@@ -221,11 +221,11 @@
             "colId": "c649b0ac-0488-4a5c-b122-9fb83dc26982",
             "containerId": "8fafd8f6-b6ed-4a97-a240-f9fe6b7c7b77",
             "name": "Get",
-            "url": "http://localhost/api/spents/1",
+            "url": "{{url}}/api/spents/1",
             "method": "GET",
             "sortNum": 30000,
             "created": "2024-01-09T03:32:46.376Z",
-            "modified": "2024-01-09T17:23:53.438Z",
+            "modified": "2024-01-10T05:40:01.962Z",
             "headers": [
                 {
                     "name": "X-Requested-With",
@@ -244,11 +244,11 @@
             "colId": "c649b0ac-0488-4a5c-b122-9fb83dc26982",
             "containerId": "8fafd8f6-b6ed-4a97-a240-f9fe6b7c7b77",
             "name": "Delete",
-            "url": "http://localhost/api/spents/1",
+            "url": "{{url}}/api/spents/1",
             "method": "DELETE",
             "sortNum": 40000,
             "created": "2024-01-09T03:08:30.050Z",
-            "modified": "2024-01-09T17:24:15.438Z",
+            "modified": "2024-01-10T05:40:10.993Z",
             "headers": [
                 {
                     "name": "X-Requested-With",
