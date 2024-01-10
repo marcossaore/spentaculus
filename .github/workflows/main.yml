@@ -11,7 +11,7 @@ jobs:
 
     env:
       DB_CONNECTION: mysql
-      DB_HOST: mysql
+      DB_HOST: localhost
       DB_PORT: 3306
       DB_DATABASE: testing
       DB_USERNAME: test_user
@@ -19,16 +19,16 @@ jobs:
 
     services:
       mysql:
-        image: 'mysql/mysql-server:8.0'
-        ports:
-          - '3306:3306'
-        environment:
+        image:  'mysql/mysql-server:8.0'
+        env:
           MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
           MYSQL_ROOT_HOST: '%'
           MYSQL_DATABASE: '${DB_DATABASE}'
           MYSQL_USER: '${DB_USERNAME}'
           MYSQL_PASSWORD: '${DB_PASSWORD}'
           MYSQL_ALLOW_EMPTY_PASSWORD: 1
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -42,7 +42,8 @@ jobs:
       run: composer install
 
     - name: Set up testing database
-      run: php artisan migrate
+      run: |
+        php artisan migrate
 
     - name: Run tests with coverage
       run: php artisan test --coverage-clover=build/logs/clover.xml
