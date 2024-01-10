@@ -10,49 +10,30 @@ jobs:
   coveralls:
     runs-on: ubuntu-latest
 
-    services:
-      mysql:
-        image: 'mysql/mysql-server:8.0'
-        env:
-          MYSQL_ROOT_PASSWORD: password
-          MYSQL_ROOT_HOST: '%'
-          MYSQL_DATABASE: testing
-          MYSQL_USER: sail
-          MYSQL_PASSWORD: password
-          MYSQL_ALLOW_EMPTY_PASSWORD: 1
-        ports:
-          - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '8.2'
-
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
-    - name: Install Composer Dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+    - name: Up Laravel Sail
+      run: ./vendor/bin/sail up -d
 
-    - name: Generate key
-      run: php artisan key:generate
+    - name: Install Dependencies
+      run: ./vendor/bin/sail composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
     - name: Run migrations
       env:
         DB_HOST: mysql
         DB_PORT: 3306
         DB_DATABASE: testing
-      run: php artisan migrate
+      run: ./vendor/bin/sail artisan migrate
 
     - name: Execute tests (Unit and Feature tests) using PEST
-      run: php artisan test --coverage-clover=build/logs/clover.xml
+      run: ./vendor/bin/sail --coverage-clover=build/logs/clover.xml
 
     - name: Upload coverage to Coveralls
-      run: php-coveralls --coverage_clover=build/logs/clover.xml -v
+      run: ./vendor/bin/php-coveralls --coverage_clover=build/logs/clover.xml -v
       env:
         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
