@@ -12,6 +12,7 @@ A documentação utilizada foi o Thunder Client, é possivel exportar a collecti
 
 * Laravel
 * PEST
+* Quasar
 * Docker
 * Sail
 * Typescript
