@@ -41,9 +41,9 @@ jobs:
       run: php artisan key:generate
 
     - name: Execute tests (Unit and Feature tests) using PEST
-       env:
-          DB_PORT: 3306
-          DB_DATABASE: testing
+      env:
+        DB_PORT: 3306
+        DB_DATABASE: testing
 
     - name: Run tests with coverage
       run: php artisan test --coverage-clover=build/logs/clover.xml
