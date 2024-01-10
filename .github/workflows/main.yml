@@ -29,14 +29,6 @@ jobs:
           MYSQL_USER: '${DB_USERNAME}'
           MYSQL_PASSWORD: '${DB_PASSWORD}'
           MYSQL_ALLOW_EMPTY_PASSWORD: 1
-        healthcheck:
-          test:
-            - CMD
-            - mysqladmin
-            - ping
-            - '-p${DB_PASSWORD}'
-          retries: 3
-          timeout: 5s
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
