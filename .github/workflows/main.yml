@@ -32,7 +32,7 @@ jobs:
       run: ./vendor/bin/sail composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
     - name: Execute tests (Unit and Feature tests) using PEST
-      run: ./vendor/bin/sail --coverage-clover=build/logs/clover.xml
+      run: ./vendor/bin/sail pest --coverage-clover=build/logs/clover.xml
 
     - name: Upload coverage to Coveralls
       run: ./vendor/bin/php-coveralls --coverage_clover=build/logs/clover.xml -v
