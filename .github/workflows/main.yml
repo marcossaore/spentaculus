@@ -23,7 +23,7 @@ jobs:
         php-version: '8.2'
 
     - name: Copy .env
-      run: cp .env.example .env
+      run: cp .env.ci .env
 
     - name: Composer install
       run: composer install
