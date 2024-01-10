@@ -15,7 +15,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Copy .env
-      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+      run: php -r "file_exists('.env') || copy('.env.ci', '.env');"
 
     - name: Set up PHP
       uses: shivammathur/setup-php@v2
@@ -32,11 +32,7 @@ jobs:
       run: ./vendor/bin/sail composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
     - name: Run migrations
-      env:
-        DB_HOST: mysql
-        DB_PORT: 3306
-        DB_DATABASE: testing
-      run: ./vendor/bin/sail artisan migrate
+      run: ./vendor/bin/sail artisan migrate --database=mysql --env=testing
 
     - name: Execute tests (Unit and Feature tests) using PEST
       run: ./vendor/bin/sail --coverage-clover=build/logs/clover.xml
