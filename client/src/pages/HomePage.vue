@@ -173,7 +173,7 @@ export default defineComponent({
       this.$q.notify({
         color: 'negative',
         position: 'top',
-        message: 'Não implmentado ainda!'
+        message: 'Não implementado ainda!'
       })
     },
     async deleteSpent (spentId) {
