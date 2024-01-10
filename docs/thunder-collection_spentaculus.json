@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Spentaculus",
-    "dateExported": "2024-01-10T05:40:19.215Z",
+    "dateExported": "2024-01-10T18:58:45.429Z",
     "version": "1.1",
     "folders": [
         {
@@ -29,7 +29,7 @@
             "method": "POST",
             "sortNum": 5000,
             "created": "2024-01-08T21:49:20.881Z",
-            "modified": "2024-01-10T05:39:08.180Z",
+            "modified": "2024-01-10T17:07:27.775Z",
             "headers": [
                 {
                     "name": "X-Requested-With",
@@ -43,7 +43,7 @@
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"description\": \"Netflix\",\n  \"value\":  2300\n}",
+                "raw": "{\n  \"description\": \"Netflix\",\n  \"value\":  4590\n}",
                 "form": []
             },
             "tests": []
@@ -57,7 +57,7 @@
             "method": "POST",
             "sortNum": 7500,
             "created": "2024-01-09T04:01:12.405Z",
-            "modified": "2024-01-10T05:39:13.028Z",
+            "modified": "2024-01-10T15:21:12.968Z",
             "headers": [
                 {
                     "name": "X-Requested-With",
@@ -71,7 +71,7 @@
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"description\": \"Netflix\",\n  \"spentAt\": \"2024-01-09 12:49\",\n  \"value\":  2300\n}",
+                "raw": "{\n  \"description\": \"Netflix\",\n  \"spentAt\": \"2024-01-07 12:49\",\n  \"value\":  2300\n}",
                 "form": []
             },
             "tests": []
@@ -137,7 +137,7 @@
             "method": "POST",
             "sortNum": 20000,
             "created": "2024-01-06T13:36:35.434Z",
-            "modified": "2024-01-10T05:39:02.448Z",
+            "modified": "2024-01-10T14:57:25.279Z",
             "headers": [
                 {
                     "name": "X-Requested-With",
