@@ -44,7 +44,7 @@ jobs:
 
     - name: Run migrations
       env:
-        DB_HOST: localhost
+        DB_HOST: mysql
         DB_PORT: 3306
         DB_DATABASE: testing
       run: php artisan migrate
