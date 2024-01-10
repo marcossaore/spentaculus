@@ -16,6 +16,7 @@ jobs:
       DB_DATABASE: testing
       DB_USERNAME: test_user
       DB_PASSWORD: test_password
+      APP_ENV: testing
 
     services:
       mysql:
