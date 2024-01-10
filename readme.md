@@ -1,4 +1,4 @@
-<!-- [![Coverage Status](https://coveralls.io/repos/github/marcossaore/abborah/badge.svg)](https://coveralls.io/github/marcossaore/abborah) -->
+<!-- [![Coverage Status](https://coveralls.io/repos/github/marcossaore/spentaculus/badge.svg)](https://coveralls.io/github/marcossaore/spentaculus) -->
 
 # Spentaculus
 
@@ -22,6 +22,17 @@ A documentação utilizada foi o Thunder Client, é possivel exportar a collecti
 ## Sobre o projeto
 
 O projeto usa o sail, portanto é necessário ter o docker instalado, foram criados scripts para facilitar a execução de comandos. Instale o php 8.2 e composer na sua máquina apenas para ser mais convenientes rodar os comandos do composer.
+
+### Instalação do composer - ubuntu (wsl)
+    sudo add-apt-repository ppa:ondrej/php
+    sudo apt-get update
+    sudo apt-get install php8.2
+    sudo apt-get install php8.2-xml
+    sudo apt-get install php8.2-curl
+
+### MailPit
+
+Use o mailpit provido pelo sail para receber os emails em [http://localhost:8025](http://localhost:8025)
 
 ## Dossiê
 
