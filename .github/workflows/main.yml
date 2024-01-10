@@ -28,17 +28,14 @@ jobs:
     - name: Composer install
       run: composer install
 
-    - name: Set up Docker
-      uses: docker/setup-buildx-action@v1
-
-    - name: Up Sail
-      run: docker-compose up -d
+    - name: Up Laravel Sail
+      run: ./vendor/bin/sail up -d
 
     - name: Install Dependencies
-      run: docker-compose exec -it laravel.test bash -c 'composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist'
+      run: ./vendor/bin/sail composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
     - name: Run migrations
-      run: docker-compose exec -it laravel.test bash -c 'php artisan migrate'
+      run: ./vendor/bin/sail php artisan migrate
 
     - name: Execute tests (Unit and Feature tests) using PEST
       run: ./vendor/bin/sail pest --coverage-clover=build/logs/clover.xml
