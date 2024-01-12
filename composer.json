@@ -40,7 +40,7 @@
         "test:unit": "./vendor/bin/sail pest --group=unit",
         "test:feat": "./vendor/bin/sail pest --group=feature",
         "test": "./vendor/bin/sail pest",
-        "app:dev": "npm run dev --prefix client",
+        "app:dev": "npm i --prefix client && npm run dev --prefix client",
         "test:coverage": "./vendor/bin/sail pest --coverage-html coverage",
         "migrate": "./vendor/bin/sail php artisan migrate",
         "rollback": "./vendor/bin/sail php artisan migrate:rollback",

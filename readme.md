@@ -21,14 +21,27 @@ A documentação utilizada foi o Thunder Client, é possivel exportar a collecti
 
 ## Sobre o projeto
 
-O projeto usa o sail, portanto é necessário ter o docker instalado, foram criados scripts para facilitar a execução de comandos. Instale o php 8.2 e composer na sua máquina apenas para ser mais convenientes rodar os comandos do composer.
+O projeto usa o sail, portanto é necessário ter o docker instalado, foram criados scripts para facilitar a execução de comandos. Instale o composer na sua máquina apenas para ser mais convenientes rodar os scripts.
 
-### Instalação do composer - ubuntu (wsl)
-    sudo add-apt-repository ppa:ondrej/php
+### Instalação das dependências usando o docker (ubuntu|wsl)
+    docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php83-composer:latest \
+    composer install --ignore-platform-reqs
+
+### Instalação do composer na sua máquina (ubuntu|wsl) para executar os scripts
+
     sudo apt-get update
-    sudo apt-get install php8.2
-    sudo apt-get install php8.2-xml
-    sudo apt-get install php8.2-curl
+    sudo apt-get install curl php-cli php-mbstring unzip
+
+    curl -sS https://getcomposer.org/installer -o composer-setup.php
+    sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+
+### Ambiente
+
+Copie o arquivo `.env.example` para o arquivo `.env`
 
 ### MailPit
 
